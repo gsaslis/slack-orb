@@ -50,7 +50,7 @@ commands:
               echo Notifying Slack Channel
               #Create Members string
               if [ -n "<< parameters.mentions >>" ]; then
-                IFS="," read -ra SLACK_MEMBERS \<< EOF > "<< parameters.mentions >>" \<< 'EOF'
+                IFS="," read -ra SLACK_MEMBERS \<< "<< parameters.mentions >> fi"
                 for i in "${SLACK_MEMBERS[@]}"; do
                   if [ $(echo ${i} | head -c 1) == "S" ]; then
                     SLACK_MENTIONS="${SLACK_MENTIONS}<!subteam^${i}> "
